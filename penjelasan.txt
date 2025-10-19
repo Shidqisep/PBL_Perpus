@@ -1,1 +1,2 @@
 halo ini adalah testing untuk github
+bisa commit langsung atau bikin branch baru
