@@ -1,0 +1,8 @@
+buat file .env dengan isi seperti berikut:
+
+DB_HOST = db
+DB_DATABASE = nama_database
+DB_USERNAME = nama_user
+DB_PASSWORD = password_db
+DB_ROOT_PASSWORD = root_pass
+

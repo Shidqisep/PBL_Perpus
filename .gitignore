@@ -1,0 +1,18 @@
+# Folder instalasi NPM
+/node_modules
+
+# File CSS yang digenerate Tailwind
+/public/css/output.css
+
+# Log error NPM
+npm-debug.log
+
+# File IDE (Visual Studio Code)
+/.vscode/
+
+# File Sistem Operasi
+.DS_Store
+Thumbs.db
+
+# File Kredensial
+.env
