@@ -9,7 +9,7 @@ services:
     ports:
       - "8082:80"  # Akses project dari http://localhost:8082 di browser
     volumes:
-      - ./public:/var/www/html # Mapping folder 'public' kita ke web root Apache
+      - .:/var/www/html # Mapping folder 'public' kita ke web root Apache
     depends_on:
       - db           # Pastikan 'db' nyala dulu sebelum 'web'
     environment:
@@ -24,7 +24,6 @@ services:
     container_name: my_database_server
     ports:
       - "3307:3306" # Opsional: jika Anda ingin akses DB dari luar (mis: DBeaver)
-      
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}

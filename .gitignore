@@ -16,3 +16,7 @@ Thumbs.db
 
 # File Kredensial
 .env
+
+#vendor dan composer.lock
+/vendor
+composer.lock
