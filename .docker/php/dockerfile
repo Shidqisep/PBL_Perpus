@@ -1,0 +1,6 @@
+# 1. Mulai dari image dasar yang kita pakai
+FROM php:8.2-apache
+
+# 2. Install extension pdo_mysql
+RUN docker-php-ext-install pdo_mysql
+RUN a2enmod rewrite

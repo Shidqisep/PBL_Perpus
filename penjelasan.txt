@@ -1,2 +1,1 @@
-halo ini adalah testing untuk github
-bisa commit langsung atau bikin branch baru
+Testing sudah lancar di laptop backend!
