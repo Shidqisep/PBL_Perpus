@@ -17,8 +17,13 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # 5. Buat file composer.json dan install PHPMailer langsung
-RUN composer require phpmailer/phpmailer
-RUN composer require vlucas/phpdotenv
+# RUN composer require phpmailer/phpmailer
+# RUN composer require vlucas/phpdotenv
+
+# salin file depedensi
+COPY composer.json composer.lock ./
+#langsung install aja kalo udah ada composer.json dan composer.lock
+RUN composer install --no-interaction --no-scripts --no-dev --optimize-autoloader
 
 # 6. (Opsional) Salin kode aplikasi kamu
 COPY . .
