@@ -18,6 +18,7 @@ WORKDIR /var/www/html
 
 # 5. Buat file composer.json dan install PHPMailer langsung
 RUN composer require phpmailer/phpmailer
+RUN composer require vlucas/phpdotenv
 
 # 6. (Opsional) Salin kode aplikasi kamu
 COPY . .
