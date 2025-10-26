@@ -19,7 +19,6 @@ Thumbs.db
 
 #vendor dan composer.lock
 /vendor
-composer.lock
 
 /public/testemail/sendemail.php
 
