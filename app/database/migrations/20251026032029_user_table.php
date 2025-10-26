@@ -24,15 +24,16 @@ final class UserTable extends AbstractMigration
         
         // Menambahkan kolom-kolom
         $table->addColumn('username', 'string', ['limit' => 255])
-              ->addColumn('nim', 'string', ['limit' => 20])
-              ->addColumn('email', 'string', ['limit' => 255])
-              ->addColumn('password', 'string', ['limit' => 255])
-              ->addIndex('username', ['unique' => true])
-              ->addIndex('nim', ['unique' => true])
-              ->addIndex('email', ['unique' => true])
-              ->addColumn('role', 'enum', ['values' => ['user', 'admin', 'superadmin'], 'default' => 'user'])
-              ->addColumn('status', 'enum', ['values' => ['pending', 'active', 'declined', 'deleted']])
-              ->addTimestamps();
+            ->addColumn('password', 'string', ['limit' => 255])
+            ->addColumn('nim', 'string', ['limit' => 20])
+            ->addColumn('email', 'string', ['limit' => 255])
+            ->addColumn('jurusan', 'string', ['limit' => 255])
+            ->addIndex('username', ['unique' => true])
+            ->addIndex('nim', ['unique' => true])
+            ->addIndex('email', ['unique' => true])
+            ->addColumn('role', 'enum', ['values' => ['user', 'admin', 'superadmin'], 'default' => 'user'])
+            ->addColumn('status', 'enum', ['values' => ['pending', 'active', 'declined', 'deleted'], 'default' => 'pending'])
+            ->addTimestamps();
         
         // "Jalankan" pembuatan tabel
         $table->create();

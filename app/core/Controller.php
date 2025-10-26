@@ -2,6 +2,14 @@
 
 class Controller
 {
+
+    public function __construct() {
+        //mulai sesi jika belum dimulai
+        if (session_status() === PHP_SESSION_NONE){
+            session_start();
+        }
+    }
+
     public function view($view, $data = []) {
         extract($data);
         $viewFile = '../app/view/' . $view . '.php';
@@ -19,7 +27,7 @@ class Controller
             require_once $modelFile;
             return new $model;
         }else {
-            die('model tidak ditemukan' . $modelFile);
+            die('error model tidak ditemukan' . $modelFile);
         }
     }
 }

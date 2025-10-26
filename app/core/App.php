@@ -22,7 +22,7 @@ class App {
         // Panggil file controller-nya
         require_once '../app/controllers/' . $this->controller . '.php';
         // Buat objek dari kelas controller tersebut
-        $this->controller = new $this->controller;
+        $this->controller = Container::resolve($this->controller);
 
         // --- 2. Mengurus METHOD ---
         // $url[1] adalah bagian kedua dari URL (e.g., 'profile')

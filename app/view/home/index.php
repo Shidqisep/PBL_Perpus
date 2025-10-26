@@ -31,7 +31,11 @@
             </p>
         </div>
 
+        <a href="/auth/">Login</a>
+
     </div>
+
+    <?php var_dump(__DIR__ . '/../../vendor/autoload.php') ?>
 
 </body>
 </html>
