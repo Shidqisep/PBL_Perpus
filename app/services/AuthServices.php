@@ -51,14 +51,14 @@ class AuthServices {
             throw new \Exception("Email Salah");
         }
 
-        if (password_verify($inputData['password'], $user['password'])) {
+        if (!password_verify($inputData['password'], $user['password'])) {
             throw new \Exception("Password Salah");
         }
 
         if ($user['status'] !== 'active')
             throw new \Exception("Akun anda belum aktif, tunggu persetujuan admin");
 
-        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_id'] = $user['id_user'];
         $_SESSION['user_role'] = $user['role'];
         $_SESSION['user_username'] = $user['username'];
 

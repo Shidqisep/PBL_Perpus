@@ -6,14 +6,14 @@
     <title>Login</title>
     <link href="/css/output.css" rel="stylesheet">
 </head>
-<body class="bg-black min-h-screen flex items-center justify-center p-4">
+<body class="bg-gray-400 min-h-screen flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
         <div class="text-center mb-8">
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Selamat Datang</h1>
             <p class="text-gray-600">Sign in to continue to your account</p>
         </div>
 
-        <form class="space-y-6">
+        <form class="space-y-6" action="/auth/handlelogin" method="POST">
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-600 mb-2">
                     Email Address

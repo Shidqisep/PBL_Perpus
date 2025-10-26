@@ -31,7 +31,7 @@
             </p>
         </div>
 
-        <a href="/auth/">Login</a>
+        <a href="/auth/formLogin">Login</a>
 
     </div>
 

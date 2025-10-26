@@ -14,7 +14,7 @@ class Auth extends Controller {
         $this->view('register/index');
     }
 
-    public function index(){
+    public function formLogin(){
         $this->view('login/index');
     }
 
@@ -51,10 +51,18 @@ class Auth extends Controller {
 
         Flasher::setFlash('Berhasil', 'login', 'success');
         header('location: /dashboard');
+        exit;
         } catch(\Exception $e) {
              Flasher::setFlash($e->getMessage(), 'Gagal login', 'danger');
-            header('Location: /login');
+            header('Location: /auth/formLogin');
+            exit;
         }
+    }
 
+    public function handleLogout(){
+        session_unset();
+        session_destroy();
+        header('location: /auth/formLogin');
+        exit;
     }
 }

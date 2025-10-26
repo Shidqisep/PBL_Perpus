@@ -1,6 +1,5 @@
 <?php
 
-use Database;
 // app/core/Container.php
 class Container {
     private static $databaseInstance = null;
