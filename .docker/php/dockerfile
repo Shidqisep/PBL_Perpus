@@ -10,15 +10,20 @@ RUN apt-get update && apt-get install -y \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
 
-# 3. Install Composer resmi dari image composer
+#Install Composer resmi dari image composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# 4. Set working directory
+#Set working directory
 WORKDIR /var/www/html
 
-# 5. Buat file composer.json dan install PHPMailer langsung
-RUN composer require phpmailer/phpmailer
-RUN composer require vlucas/phpdotenv
+# Buat file composer.json dan install PHPMailer langsung
+# RUN composer require phpmailer/phpmailer
+# RUN composer require vlucas/phpdotenv
+
+# salin file depedensi
+COPY composer.json composer.lock ./
+#langsung install aja kalo udah ada composer.json dan composer.lock
+RUN composer install --no-interaction --no-scripts --optimize-autoloader
 
 # 6. (Opsional) Salin kode aplikasi kamu
 COPY . .
@@ -27,3 +32,10 @@ COPY . .
 # RUN chown -R www-data:www-data /var/www/html
 WORKDIR /var/www/html
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf
+
+# Copy entrypoint script ke dalam container
+COPY .docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]

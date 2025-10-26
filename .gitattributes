@@ -1,0 +1,12 @@
+# Set default behavior
+* text=auto
+
+# Paksa file-file penting ini untuk SELALU menggunakan LF
+# Ini sangat penting untuk shell script
+*.sh    text eol=lf
+*.php   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.lock  text eol=lf
+phinx.php text eol=lf
