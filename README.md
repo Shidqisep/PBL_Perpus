@@ -1,1 +1,1 @@
-ini file readme
+1. aku pusing semangatin pls
