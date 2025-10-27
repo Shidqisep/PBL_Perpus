@@ -1,3 +1,6 @@
+<?php Flasher::Flash() ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -7,7 +7,7 @@
     <title>Docker + PHP + Tailwind</title>
     <link href="/css/output.css" rel="stylesheet">
 </head>
-<body class="bg-gray-200 font-sans">
+<body class="bg-gray-300 font-sans">
 
     <div class="container mx-auto mt-10 p-6 max-w-2xl bg-white rounded-lg shadow-lg">
         
