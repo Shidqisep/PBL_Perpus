@@ -19,7 +19,7 @@ return
             'name' => $_ENV['DB_DATABASE'],
             'user' => $_ENV['DB_USERNAME'],
             'pass' => $_ENV['DB_PASSWORD'],
-            'port' => '3307',
+            'port' => '3306',
             'charset' => 'utf8',
         ],
         'development' => [

@@ -19,17 +19,16 @@ final class UserTable extends AbstractMigration
      */
     public function change(): void
     {
-        // // Membuat tabel baru bernama 'users'
+        // Membuat tabel baru bernama 'users'
         $table = $this->table('users', array('id' => 'id_user'));
-        
-        // Menambahkan kolom-kolom
         $table->addColumn('username', 'string', ['limit' => 255])
             ->addColumn('password', 'string', ['limit' => 255])
-            ->addColumn('nim', 'string', ['limit' => 20])
+            ->addColumn('nomor_induk', 'string', ['limit' => 30])
             ->addColumn('email', 'string', ['limit' => 255])
-            ->addColumn('jurusan', 'string', ['limit' => 255])
+            ->addColumn('jurusan', 'string', ['limit' => 255, 'null' => true])
+            ->addColumn('fotobukti', 'string',['limit' => 255, 'null' => true] )
             ->addIndex('username', ['unique' => true])
-            ->addIndex('nim', ['unique' => true])
+            ->addIndex('nomor_induk', ['unique' => true])
             ->addIndex('email', ['unique' => true])
             ->addColumn('role', 'enum', ['values' => ['user', 'admin', 'superadmin'], 'default' => 'user'])
             ->addColumn('status', 'enum', ['values' => ['pending', 'active', 'declined', 'deleted'], 'default' => 'pending'])

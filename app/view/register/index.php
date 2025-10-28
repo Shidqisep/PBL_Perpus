@@ -90,7 +90,7 @@
                     </div>
                 </div>
 
-                <!-- Upload Bukti Kuliaca -->
+                <!-- Upload Bukti KuBaca -->
                 <div>
                     <label for="buktiKuliaca" class="block text-sm font-semibold text-gray-700 mb-2">
                         Upload Bukti Kubaca
