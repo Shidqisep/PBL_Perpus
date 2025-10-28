@@ -71,7 +71,6 @@
                 </a>
             </p>
         </div>
-
         </div>
     </div>
 </body>

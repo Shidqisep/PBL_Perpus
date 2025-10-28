@@ -10,7 +10,7 @@ class Dashboard extends controller
             exit; //Hentikan eksekusi script
         }
         $data['judul'] = 'Dashboard';
-        $data['username'] = $_SESSION['user_username'];
+        $data['user'] = $this->model('UserModel')->findUserByEmail($_SESSION['email']);
 
         $this->view('dashboard/index', $data);
 

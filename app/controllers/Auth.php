@@ -4,14 +4,12 @@ use App\services\AuthServices;
 
 class Auth extends Controller {
 
-    private $authService;
-
-    public function __construct(AuthServices $authService) {
-        $this->authService = $authService;
-    }
-
     public function registerForm(){
         $this->view('register/index');
+    }
+
+    public function index(){
+        $this->view('login/index');
     }
 
     public function formLogin(){
@@ -20,23 +18,47 @@ class Auth extends Controller {
 
     public function handleRegister(){
         try {
+
+            if ($_POST['password'] != $_POST['confirmPassword']) {
+                throw new Exception('Password tidak sama');
+            }
+
+            if (isset($_FILES['buktiKubaca'])) {
+                $buktiKubaca =  uploadImage($_FILES['buktiKubaca'], 'storage/FotoBukti/');
+            } else {
+                throw new Exception('Mohon upload files');
+            }
+
+
             $data = [
                 'username' => $_POST['username'],
-                'password' => $_POST['password'],
-                'nim' => $_POST['nim'],
+                'password' => password_hash($_POST['password'], PASSWORD_BCRYPT),
+                'nomor_induk' => $_POST['nomor_induk'],
                 'email' => $_POST['email'],
-                'jurusan' => $_POST['jurusan']
+                'jurusan' => $_POST['jurusan'],
+                'fotobukti' => $buktiKubaca,
+                'suspend_count' => 0,
+                'now' => date('Y-m-d H:i:s')
             ];
-            $user = $this->authService->registerUser($data);
+
+            if ($this->model('UserModel')->findUserByEmailorNomor_Induk($data['email'], $data['nomor_induk'])) {
+                throw new Exception('Email atau NIM sudah terdaftar!');
+            }
+            
+
+            $result = $this->model('UserModel')->createUser($data);
+            if ($result <= 0) {
+                throw new Exception('Something Went Wrong');
+            }
 
             Flasher::setFlash('Sukses', 'Registrasi, Silahkan tunggu konfirmasi admin', 'success');
-            header('Location: /login');
+            header('Location: /auth/login');
             exit;
 
         } catch (\Exception $e ) {
             $error = $e->getMessage();
             Flasher::setFlash($error, 'Gagal Registrasi', 'danger');
-            header('Location: /register');
+            header('Location: /registerForm');
             exit;
         }
     }
@@ -47,7 +69,24 @@ class Auth extends Controller {
             'email' => $_POST['email'],
             'password' => $_POST['password']
             ];
-        $user = $this->authService->login($data);
+        $user = $this->model('UserModel')->findUserByEmail($data['email']);
+
+        if (!$user) {
+            throw new Exception('Email Salah');
+        }
+
+        if (!password_verify($data['password'], $user['password'])) {
+            throw new Exception('Password Salah');
+        }
+
+        if ($user['status'] !== 'active') {
+            throw new Exception('Akun anda belom AKtif!');
+        }
+
+        $_SESSION['user_id'] = $user['id_user'];
+        $_SESSION['user_role'] = $user['role'];
+        $_SESSION['user_username'] = $user['username'];
+        $_SESSION['email'] = $user['email'];
 
         Flasher::setFlash('Berhasil', 'login', 'success');
         header('location: /dashboard');

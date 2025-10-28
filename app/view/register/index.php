@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Akun</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="/css/output.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen flex items-center justify-center p-4">
@@ -25,7 +25,7 @@
             </div>
 
             <!-- Form -->
-            <form class="space-y-6">
+            <form class="space-y-6" action="/auth/handleRegister/" method="POST" enctype="multipart/form-data">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Left Column -->
                     <div class="space-y-6">
@@ -36,8 +36,8 @@
                             </label>
                             <input
                                 type="text"
-                                id="nama"
-                                name="nama"
+                                id="username"
+                                name="username"
                                 class="w-full px-4 py-3 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             />
@@ -46,12 +46,12 @@
                         <!-- NIM -->
                         <div>
                             <label for="nim" class="block text-sm font-semibold text-gray-700 mb-2">
-                                NIM
+                                nomor_induk
                             </label>
                             <input
                                 type="text"
-                                id="nim"
-                                name="nim"
+                                id="nomor_induk"
+                                name="nomor_induk"
                                 class="w-full px-4 py-3 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 required
                             />
@@ -92,13 +92,13 @@
 
                 <!-- Upload Bukti KuBaca -->
                 <div>
-                    <label for="buktiKuliaca" class="block text-sm font-semibold text-gray-700 mb-2">
+                    <label for="buktiKubaca" class="block text-sm font-semibold text-gray-700 mb-2">
                         Upload Bukti Kubaca
                     </label>
                     <input
                         type="file"
-                        id="buktiKuliaca"
-                        name="buktiKuliaca"
+                        id="buktiKubaca"
+                        name="buktiKubaca"
                         class="w-full px-4 py-3 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500 file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-gray-600 file:text-white hover:file:bg-gray-500 file:cursor-pointer"
                         required
                     />
@@ -135,6 +135,7 @@
                 <!-- Submit Button -->
                 <div class="pt-6 border-t-2 border-dotted border-blue-300">
                     <button
+                    type="submit"
                         class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 shadow-md hover:shadow-lg"
                     >
                         Daftar
@@ -151,7 +152,7 @@
                     </a>
                 </p>
                 <p class="text-gray-600 mt-2">
-                    <a href="#" class="text-blue-600 hover:text-blue-700 font-semibold underline">
+                    <a href="/auth/index" class="text-blue-600 hover:text-blue-700 font-semibold underline">
                         Booking Ruang Rapat
                     </a>
                 </p>

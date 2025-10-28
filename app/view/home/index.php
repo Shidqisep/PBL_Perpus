@@ -35,7 +35,5 @@
 
     </div>
 
-    <?php var_dump(__DIR__ . '/../../vendor/autoload.php') ?>
-
 </body>
 </html>

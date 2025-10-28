@@ -22,7 +22,7 @@ class Controller
 
     public function model($model){
 
-        $modelFile = '../app/view' . $model . '.php';
+        $modelFile = '../app/model/' . $model . '.php';
         if (file_exists($modelFile)) {
             require_once $modelFile;
             return new $model;
