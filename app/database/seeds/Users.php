@@ -22,10 +22,11 @@ class Users extends AbstractSeed
         $data = [
         [
             'username' => 'superadmin',
-            'nim' => '0000001',
+            'nomor_induk' => '0000001',
             'email' => 'superadmin@example.com',
             'password' => password_hash('super123', PASSWORD_BCRYPT),
             'jurusan' => 'superadmin',
+            'fotobukti' => null,
             'role' => 'superadmin',
             'status' => 'active',
             'created_at' => date('Y-m-d H:i:s'),
@@ -33,10 +34,11 @@ class Users extends AbstractSeed
         ],
         [
             'username' => 'admin',
-            'nim' => '0000002',
+            'nomor_induk' => '0000002',
             'email' => 'admin@example.com',
             'password' => password_hash('admin123', PASSWORD_BCRYPT),
             'jurusan' => 'admin',
+            'fotobukti' => null,
             'role' => 'admin',
             'status' => 'active',
             'created_at' => date('Y-m-d H:i:s'),
@@ -44,10 +46,11 @@ class Users extends AbstractSeed
         ],
         [
             'username' => 'user',
-            'nim' => '0000003',
+            'nomor_induk' => '0000003',
             'email' => 'user@example.com',
             'password' => password_hash('user123', PASSWORD_BCRYPT),
             'jurusan' => 'Teknik Informatika dan Komputer',
+            'fotobukti' => 'user1.png',
             'role' => 'user',
             'status' => 'active',
             'created_at' => date('Y-m-d H:i:s'),

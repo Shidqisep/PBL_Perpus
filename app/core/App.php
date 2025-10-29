@@ -8,21 +8,16 @@ class App {
     public function __construct() {
         $url = $this->parseURL();
 
-        // --- 1. Mengurus CONTROLLER ---
-        // Cek apakah ada controller dengan nama yang sesuai
-        // $url[0] adalah bagian pertama dari URL (e.g., 'users')
+        //cek controller apakah ada
         if (isset($url[0])) {
-            $controllerName = ucfirst($url[0]); // 'users' -> 'Users'
-            if (file_exists('../app/controllers/' . $controllerName . '.php')) {
-                $this->controller = $controllerName;
+            if (file_exists('../app/controllers/' . $url[0] . '.php')) {
+                $this->controller = $url[0];
                 unset($url[0]); // Hapus dari array agar sisa parameternya saja
             }
         }
-
-        // Panggil file controller-nya
-        require_once '../app/controllers/' . $this->controller . '.php';
+         require_once '../app/controllers/' . $this->controller . '.php';
         // Buat objek dari kelas controller tersebut
-        $this->controller = Container::resolve($this->controller);
+        $this->controller = new $this->controller;
 
         // --- 2. Mengurus METHOD ---
         // $url[1] adalah bagian kedua dari URL (e.g., 'profile')
